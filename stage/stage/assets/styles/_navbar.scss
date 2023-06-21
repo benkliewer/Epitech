@@ -1,0 +1,139 @@
+.navigation {
+  position: relative;
+  height: $nav-height;
+  background-color: $nav-background;
+}
+
+.nav-container {
+  max-width: $content-width;
+  margin: 0 auto;
+}
+
+.brand {
+  position: absolute;
+  float: left;
+  top: 3.8em;
+  transform: translate(10%, -50%);
+
+  a,
+  a:visited {
+    color: $text-color-1;
+    text-decoration: none;
+  }
+}
+
+nav {
+  float: right;
+  margin-top: 1.5em;
+  ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    li {
+      float: left;
+      position: relative;
+      a {
+        display: block;
+        padding: 10px 20px 0 20px;
+        line-height: 50px;
+        color: $text-color-1;
+        text-decoration: none;
+      }
+    }
+    ul li {
+      min-width: 190px;
+      a {
+        padding: 15px;
+        line-height: 20px;
+        background-color: $nav-background;
+      }
+    }
+  }
+}
+
+.nav-mobile {
+  display: none;
+  position: absolute;
+  top: 0;
+  right: 0;
+  height: $nav-height;
+  width: $nav-height;
+  background-color: $nav-background;
+}
+
+@media only screen and (max-width: $breakpoint) {
+  .nav-mobile {
+    display: block;
+  }
+  nav {
+    width: 100%;
+    padding: $nav-height 0 15px;
+    margin-top: 0em;
+    ul {
+      display: none;
+      li {
+        float: none;
+        position: relative;
+        a {
+          border-radius: 0 !important;
+          padding: 15px;
+          line-height: 20px;
+          background-color: $nav-background;
+          text-align: center;
+          &:hover::before {
+            width: 20%;
+          }
+        }
+        ul li a {
+          padding-left: 30px;
+        }
+      }
+    }
+  }
+}
+
+#nav-toggle {
+  position: absolute;
+  left: 18px;
+  top: 2.9em;
+  cursor: pointer;
+  padding: 10px 35px 16px 0px;
+  span,
+  span:before,
+  span:after {
+    cursor: pointer;
+    border-radius: 1px;
+    height: 5px;
+    width: 35px;
+    background: $primary;
+    position: absolute;
+    display: block;
+    content: "";
+    transition: all 300ms ease-in-out;
+  }
+  span:before {
+    top: -10px;
+  }
+  span:after {
+    bottom: -10px;
+  }
+  &.active span {
+    background-color: transparent;
+    &:before,
+    &:after {
+      top: 0;
+    }
+    &:before {
+      transform: rotate(45deg);
+    }
+    &:after {
+      transform: rotate(-45deg);
+    }
+  }
+}
+
+@media screen and (min-width: $breakpoint) {
+  .nav-list {
+    display: flex !important;
+  }
+}

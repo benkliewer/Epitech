@@ -1,0 +1,134 @@
+@import "./variables";
+
+ul {
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+}
+
+.text-primary {
+  color: $primary;
+}
+
+.btn {
+  padding: 5px 15px;
+  border-radius: 20px;
+  cursor: pointer;
+  transition: 0.2s opacity;
+  &:hover {
+    opacity: 0.8;
+  }
+}
+
+@mixin button($type, $padding-width, $padding-height, $color) {
+  text-decoration: none;
+  color: $color;
+  padding: $padding-width $padding-height;
+  font-size: $font-size-button;
+  @if ($type== "main") {
+    border: solid $color 1px;
+    border-radius: 10px;
+    &:hover {
+      background-color: $color;
+      color: $text-color-1;
+      transition: $transition;
+    }
+  } @else if($type== "link-main") {
+    border-radius: 5px;
+    background-color: $primary;
+    font-weight: 800;
+    &:hover {
+      color: $text-color-1;
+      background-color: $text-color-2;
+      transition: $transition;
+    }
+  } @else if($type== "nav") {
+    font-weight: 700;
+    &:hover {
+      color: $primary;
+      background-color: $text-color-2;
+      transition: $transition;
+    }
+  } @else if($type== "reverse") {
+    background-color: $primary;
+    border-radius: 10px;
+    border: solid 1px $primary;
+    color: $text-color-2;
+    &:hover {
+      border: solid $color 1px;
+      color: $primary;
+      background-color: $text-color-2;
+      transition: $transition;
+    }
+  } 
+}
+
+.btn-primary {
+  @include button("main", 10px, 40px, $text-color-2);
+}
+.btn-primary-reverse {
+  @include button("reverse", 10px, 30px, $primary);
+}
+.link-nav-main {
+  @include button("link-main", 0.5em, 1em, $text-color-2);
+}
+.link-nav {
+  @include button("nav", 0.5em, 1em, $text-color-1);
+}
+
+@mixin box($type) {
+  @if ($type== "top") {
+    border-top-left-radius: 30px;
+    border-top-right-radius: 30px;
+  } @else if($type== "bottom") {
+    border-bottom-left-radius: 30px;
+    border-bottom-right-radius: 30px;
+  }
+}
+
+.box-top {
+  @include box("top");
+}
+.box-bottom {
+  @include box("bottom");
+}
+
+%styleBigTitle {
+  font-weight: 700;
+  font-size: 2em;
+  margin: 0;
+  @media screen and (max-width: 1000px) {
+      font-size: 1.5em;
+  }
+}
+
+%section-bannniere {
+  min-height: 60vh;
+  background-position: flex-start;
+  background-size: cover;
+  img {
+    width: 60px;
+  }
+}
+
+%styleParagraphe {
+  font-weight: 500;
+  font-size: 0.9em;
+}
+
+@mixin bannerTitle($text-color-2) {
+  font-weight: 500;
+  font-size: 3em;
+  text-align: center;
+  color: $text-color-2;
+  margin: 0;
+}
+
+@mixin inputForm($txt-color-footer){
+  padding: 1em;
+  border-radius: 10px;
+  border: solid 0.5px $txt-color-footer;
+}
+
